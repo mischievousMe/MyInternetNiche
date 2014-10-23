@@ -13,50 +13,28 @@ var statusDisplay = null;
 function addBookmark() {
     // Cancel the form submit
     event.preventDefault();
-
-    // The URL to POST our data to
-    var postUrl = 'http://localhost/';
-
-    // Set up an asynchronous AJAX POST request
-    var xhr = new XMLHttpRequest();
-    xhr.open('POST', postUrl, true);
-    
-    // Prepare the data to be POSTed by URLEncoding each field's contents
-    var title = encodeURIComponent(document.getElementById('title').value);
-    var url = encodeURIComponent(document.getElementById('url').value);
-    var summary = encodeURIComponent(document.getElementById('summary').value);
-    var tags = encodeURIComponent(document.getElementById('tags').value);
-    
-    var params = 'title=' + title + 
-                 '&url=' + url + 
-                 '&summary=' + summary +
-                 '&tags=' + tags;
-    
-    // Replace any instances of the URLEncoded space char with +
-    params = params.replace(/%20/g, '+');
-
-    // Set correct header for form data 
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-
-    // Handle request state change events
-    xhr.onreadystatechange = function() { 
-        // If the request completed
-        if (xhr.readyState == 4) {
-            statusDisplay.innerHTML = '';
-            if (xhr.status == 200) {
-                // If it was a success, close the popup after a short delay
-                statusDisplay.innerHTML = 'Saved!';
-                window.setTimeout(window.close, 1000);
-            } else {
-                // Show what went wrong
-                statusDisplay.innerHTML = 'Error saving: ' + xhr.statusText;
-            }
-        }
-    };
-
-    // Send the request and set status
-    xhr.send(params);
     statusDisplay.innerHTML = 'Saving...';
+    var count = + localStorage.getItem('markCount');
+    count = count + 1;
+    localStorage.setItem('markCount','' + count);
+    console.log(localStorage.getItem('markCount'));
+    // Prepare the data to be POSTed by URLEncoding each field's contents
+    var title = (document.getElementById('title').value);
+    var url = (document.getElementById('url').value);
+    var summary = (document.getElementById('summary').value);
+    var tags = (document.getElementById('tags').value);
+
+    localStorage.setItem(''+count+'x1',title);
+    localStorage.setItem(''+count+'x2',url);
+    localStorage.setItem(''+count+'x3',summary);
+    localStorage.setItem(''+count+'x4',tags);
+
+    console.log(localStorage.getItem(''+count+'x1',title));
+    console.log(localStorage.getItem(''+count+'x2',url));
+    console.log(localStorage.getItem(''+count+'x3',summary));
+    console.log(localStorage.getItem(''+count+'x4',tags));
+    
+    statusDisplay.innerHTML = 'Saved!';
 }
 
 function fetchLocalHost() {
@@ -67,6 +45,9 @@ function fetchLocalHost() {
 
 // When the popup HTML has loaded
 window.addEventListener('load', function(evt) {
+    if(localStorage.getItem('markCount') == null) {
+        localStorage.setItem('markCount','0');
+    }
     // Cache a reference to the status display SPAN
     statusDisplay = document.getElementById('status-display');
     // Handle the bookmark form submit event with our addBookmark function
