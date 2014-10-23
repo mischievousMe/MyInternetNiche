@@ -60,8 +60,9 @@ function addBookmark() {
 }
 
 function fetchLocalHost() {
-        event.preventDefault();
-        chrome.tabs.create({url:"http://localhost/"});
+        //event.preventDefault();
+        //chrome.tabs.create({url:"http://localhost/"});
+        //window.location = "http://localhost/";
 }
 
 // When the popup HTML has loaded
