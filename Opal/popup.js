@@ -59,6 +59,11 @@ function addBookmark() {
     statusDisplay.innerHTML = 'Saving...';
 }
 
+function fetchLocalHost() {
+        event.preventDefault();
+        chrome.tabs.create({url:"http://localhost/"});
+}
+
 // When the popup HTML has loaded
 window.addEventListener('load', function(evt) {
     // Cache a reference to the status display SPAN
@@ -72,4 +77,5 @@ window.addEventListener('load', function(evt) {
         // content.js into the current tab's HTML
         eventPage.getPageDetails(onPageDetailsReceived);
     });
+    document.getElementById('fetch').addEventListener('click', fetchLocalHost);
 });
