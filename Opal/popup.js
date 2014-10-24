@@ -4,6 +4,14 @@ function onPageDetailsReceived(pageDetails)  {
     document.getElementById('title').value = pageDetails.title; 
     document.getElementById('url').value = pageDetails.url; 
     document.getElementById('summary').innerText = pageDetails.summary; 
+    if(localStorage.getItem(pageDetails.url)) {
+        console.log("hi");
+        window.location.href = "removeBookmark.html"
+    }
+    else {
+        console.log(pageDetails.url)
+        console.log(localStorage.getItem(pageDetails.url))
+    }
 } 
 
 // Global reference to the status display SPAN
@@ -28,11 +36,12 @@ function addBookmark() {
     localStorage.setItem(''+count+'x2',url);
     localStorage.setItem(''+count+'x3',summary);
     localStorage.setItem(''+count+'x4',tags);
+    localStorage.setItem(url,''+count);
 
-    console.log(localStorage.getItem(''+count+'x1',title));
-    console.log(localStorage.getItem(''+count+'x2',url));
-    console.log(localStorage.getItem(''+count+'x3',summary));
-    console.log(localStorage.getItem(''+count+'x4',tags));
+    console.log(localStorage.getItem(''+count+'x1'));
+    console.log(localStorage.getItem(''+count+'x2'));
+    console.log(localStorage.getItem(''+count+'x3'));
+    console.log(localStorage.getItem(''+count+'x4'));
     
     statusDisplay.innerHTML = 'Saved!';
 }
