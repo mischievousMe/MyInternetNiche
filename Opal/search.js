@@ -9,6 +9,10 @@ window.addEventListener('load', function(evt) {
 
     	var title = localStorage.getItem(''+i+'x1');
     	var url = localStorage.getItem(''+i+'x2');
+        if(url == null) {
+            console.log("miss!")
+            continue
+        }
     	var summary = localStorage.getItem(''+i+'x3');
     	var tags = localStorage.getItem(''+i+'x4');
 

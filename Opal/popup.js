@@ -21,16 +21,22 @@ var statusDisplay = null;
 function addBookmark() {
     // Cancel the form submit
     event.preventDefault();
-    statusDisplay.innerHTML = 'Saving...';
-    var count = + localStorage.getItem('markCount');
-    count = count + 1;
-    localStorage.setItem('markCount','' + count);
-    console.log(localStorage.getItem('markCount'));
+
     // Prepare the data to be POSTed by URLEncoding each field's contents
     var title = (document.getElementById('title').value);
     var url = (document.getElementById('url').value);
     var summary = (document.getElementById('summary').value);
     var tags = (document.getElementById('tags').value);
+    if(url == "") {
+        statusDisplay.innerHTML = 'Error: No URL!';
+        return
+    }
+
+    statusDisplay.innerHTML = 'Saving...';
+    var count = + localStorage.getItem('markCount');
+    count = count + 1;
+    localStorage.setItem('markCount','' + count);
+    console.log(localStorage.getItem('markCount'));
 
     localStorage.setItem(''+count+'x1',title);
     localStorage.setItem(''+count+'x2',url);
