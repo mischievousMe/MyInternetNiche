@@ -26,11 +26,14 @@ window.addEventListener('load', function(evt) {
         var cell3 = document.createElement("td");
         var cell4 = document.createElement("td");
 
-        textnode1 = document.createTextNode(title);
+        img = document.createElement('img');
+        img.src = "http://www.google.com/s2/favicons?domain=" + url;
+        textnode1 = document.createTextNode(' '+title);
         textnode2 = document.createTextNode(url);
         textnode3 = document.createTextNode(summary);
         textnode4 = document.createTextNode(tags);
 
+        cell1.appendChild(img);
         cell1.appendChild(textnode1);
         cell2.appendChild(textnode2);
         cell3.appendChild(textnode3);
