@@ -19,17 +19,26 @@
                 width: 420px; 
             }
         </style>
+        <!-- <script src="ThirdParty/jquery-1.11.1.js"></script> -->
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" type="text/css" href="ThirdParty/DataTables-1.10.3/media/css/jquery.dataTables.css">
+  
+        <!-- jQuery -->
+        <script type="text/javascript" charset="utf8" src="ThirdParty/DataTables-1.10.3/media/js/jquery.js"></script>
+  
+        <!-- DataTables -->
+        <script type="text/javascript" charset="utf8" src="ThirdParty/DataTables-1.10.3/media/js/jquery.dataTables.js"></script>
+
         <script src="search.js"></script>
     </head>
     <body>
 		<p>Hi there, here we list all your bookmarks!</p>
-		<p>
-			<label for="search">Search</label><br/>
-            <input type="text" id="search" name="search" size="50" value="" />
-        </p>
-        <table border='0' id='mytable'>
+        <table border='1' id='mytable'>
+            <thead>
+                <tr><td>title</td><td>url</td><td>summary</td><td>tags</td></tr>
+            </thead>
 			<tbody>
-				<tr><td>title</td><td>url</td><td>summary</td><td>tags</td></tr>
+				
 			</tbody>
 		</table>
 	</body>

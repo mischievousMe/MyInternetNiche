@@ -45,6 +45,8 @@ window.addEventListener('load', function(evt) {
         row.appendChild(cell4);
 
         tabBody.appendChild(row);
-
     } 
+    $(document).ready( function () {
+        $('#mytable').DataTable();
+    });
 });

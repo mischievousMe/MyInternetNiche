@@ -4,7 +4,7 @@
     "description": "Collect favourite URLs and search and sort them.",
     "version": "1.0",
     "background": {
-        "scripts": ["event.js"],
+        "scripts": ["event.js", "ThirdParty/jquery-1.11.1.js"],
         "persistent": false
     },
     "browser_action": {
